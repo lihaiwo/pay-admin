@@ -10,22 +10,10 @@ export default {
    *              用来在菜单中显示文字
    */
   useI18n: false,
-  /**
-   * 当前环境唯一的http地址
-   */
-  httpUrl: baseURL || 'http://192.168.0.71:7018',
+  baseURL: baseURL,
   /**
    * 分页对象的设置
    */
-  page: {
-    pageSiz: 10, // 返回数据量
-    pageNum: 1,// 数据偏移量
-  },
-  /**
-   * 当前系统的信息
-   */
-  system: {
-    name: 'admin',
-    path: '/admin'
-  }
+  pageSize: 10,
+  pageSizeOpts: [1,10,25,50,100],
 }

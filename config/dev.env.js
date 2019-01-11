@@ -1,5 +1,4 @@
-// const target = 'http://test.gd-iov.com/charger-system'
-const target = 'http://192.168.0.70:3344'
+const target = process.env.VUE_APP_BASE_URL
 
 const devProxy = ['/bz', '/weixin', '/android'] // 代理
 // 生成代理配置对象
