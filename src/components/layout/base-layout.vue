@@ -9,6 +9,9 @@
     <div class="">
       <slot name="body-table"></slot>
     </div>
+    <div class="" style="display:none">
+      <slot name="dialog-children"></slot>
+    </div>
   </div>
 </template>
 <script>

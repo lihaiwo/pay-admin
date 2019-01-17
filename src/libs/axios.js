@@ -49,7 +49,7 @@ class httpRequest {
           //     remevoToken()
           //     window.location.href = window.location.pathname + '#/login'
           // }
-        Message.error(data.message)
+        Message.error(data.message || data.errMsg)
         return Promise.reject(res)
       }
       return data.data

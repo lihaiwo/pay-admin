@@ -21,12 +21,22 @@
         <Page :total="total" :current="current" show-elevator @on-change="pageChange" @on-page-size-change="pageChange"></Page>
       </div>
     </div>
+    <div slot="dialog-children">
+      <keep-alive>
+        <component v-bind:is="currentTabComponent"></component>
+      </keep-alive>
+    </div>
   </base-layout>
 </template>
 <script>
+import add from './add'
+import edit from './edit'
+import { mapActions } from "vuex";
 export default {
+  components: { add, edit },
   data () {
     return {
+      currentTabComponent: 'add',
       searchData: {},
       data: [],
       columns: [
@@ -40,6 +50,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'initDictByType'
+    ]),
     create () {
     },
     pageChange(index) { //分页
@@ -50,6 +63,13 @@ export default {
       if (flag) this.current = 1;
       this.search();
     },
+    resetSearch () {
+    }
+  },
+  mounted () {
+    // this.initDictByType(['chargingSpeed']).then(()=>{
+    //   this.chargingSpeedList = this.$store.getters.getDictListByType('chargingSpeed');
+    // })
   }
 }
 </script>

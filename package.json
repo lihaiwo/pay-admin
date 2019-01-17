@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "echarts": "^4.0.4",
-    "ikpay": "0.0.15",
+    "ikpay": "0.0.16",
     "js-cookie": "^2.2.0",
     "vue": "^2.5.21",
     "vue-router": "^3.0.2",
