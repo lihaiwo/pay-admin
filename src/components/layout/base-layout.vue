@@ -1,21 +1,34 @@
 <template>
   <div class="container">
-    <div>
+    <div v-show="isShow">
       <slot name="search"></slot>
-    </div>
-    <div class="o-edit-btn">
-      <slot name="header-btn"></slot>
-    </div>
-    <div class="">
+      <div class="o-edit-btn">
+        <slot name="header-btn"></slot>
+      </div>
       <slot name="body-table"></slot>
     </div>
-    <div class="" style="display:none">
-      <slot name="dialog-children"></slot>
+    <div>
+      <slot name="children"></slot>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'BaseLayout'
+  name: 'BaseLayout',
+  props: {
+    value: {
+      type: Number,
+      default: 0
+    },
+    status: {
+      type: Number,
+      default: 0
+    },
+  },
+  computed: {
+    isShow () {
+      return this.value === this.status
+    },
+  },
 }
 </script>
