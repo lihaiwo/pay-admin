@@ -9,7 +9,7 @@ const devServer = require('./config/dev.env.js') // 反向代理所需要的host
 const BASE_URL = './'
 
 module.exports = {
-  baseUrl: BASE_URL,
+  publicPath: BASE_URL,
   devServer: devServer,
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md

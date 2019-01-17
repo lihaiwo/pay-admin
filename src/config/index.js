@@ -16,4 +16,5 @@ export default {
    */
   pageSize: 10,
   pageSizeOpts: [1,10,25,50,100],
+  enabledPower: true,  //是否启动权限认证
 }

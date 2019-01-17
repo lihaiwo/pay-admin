@@ -15,29 +15,10 @@
                 <Menu theme="light" width="auto" @on-select="turnUrl">
                   <Submenu name="1">
                     <template slot="title">
-                      <Icon type="md-podium" />
-                      柱状图
+                      <Icon type="ios-people" />
+                      系统管理
                     </template>
-                    <MenuItem name="bar/demo1">简单示例</MenuItem>
-                    <MenuItem name="bar/demo2">两根柱状</MenuItem>
-                    <MenuItem name="bar/demo3">横着摆放</MenuItem>
-                    <MenuItem name="bar/demo4">图表数据</MenuItem>
-                    <MenuItem name="bar/demo5">压差突变</MenuItem>
-                  </Submenu>
-                  <Submenu name="2">
-                    <template slot="title">
-                      <Icon type="ios-radio" />
-                      饼状图
-                    </template>
-                    <MenuItem name="pie/demo1">示例1</MenuItem>
-                    <MenuItem name="pie/demo2">示例2</MenuItem>
-                  </Submenu>
-                  <Submenu name="3">
-                    <template slot="title">
-                      <Icon type="ios-pulse" />
-                      线状图
-                    </template>
-                    <MenuItem name="line/demo1">示例1</MenuItem>
+                    <MenuItem name="system/account">账户管理</MenuItem>
                   </Submenu>
                 </Menu>
               </Sider>
