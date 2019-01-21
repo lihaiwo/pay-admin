@@ -55,7 +55,7 @@
         <FormItem label="颜色">
           <common-list :options="allColor" v-model="addForm.color" class="color-selector">
             <div slot-scope="{ option }" :class="option.color" class="item">
-              <Icon type="right" class="color"></Icon>
+              <Icon type="ios-checkmark" class="color"/>
             </div>
           </common-list>
         </FormItem>
@@ -69,8 +69,8 @@
 </template>
 <script>
 import { dateFtt } from '@/libs/tools'
-import CommonList from '_c/common-list'
-import { saveDutyRoster } from '@/api/duty'
+import CommonList from '_c/common/common-list'
+// import { saveDutyRoster } from '@/api/duty'
 export default {
   components: {
     CommonList

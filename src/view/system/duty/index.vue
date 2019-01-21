@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import fullcalendar from '_c/other/fullcalendar'
+import fullcalendar from './fullcalendar'
 export default {
   components: {
     fullcalendar

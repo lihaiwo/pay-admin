@@ -19,6 +19,7 @@
                       系统管理
                     </template>
                     <MenuItem name="system/account">账户管理</MenuItem>
+                    <MenuItem name="system/duty">值班表</MenuItem>
                   </Submenu>
                 </Menu>
               </Sider>
