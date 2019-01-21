@@ -37,7 +37,7 @@
 export default {
   methods: {
     goHomePage () {
-      this.$router.push({ path: `/` })
+      window.location.href = '//admin.akpay.top'
     },
     turnUrl (name) {
       this.$router.push({ path: `/admin/${name}` })
