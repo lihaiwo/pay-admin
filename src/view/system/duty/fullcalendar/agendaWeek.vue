@@ -53,11 +53,11 @@
           <DatePicker type="datetime" v-model="addForm.dutyDateEnd" format="yyyy-MM-dd HH:mm"></DatePicker>
         </FormItem>
         <FormItem label="颜色">
-          <common-list :options="allColor" v-model="addForm.color" class="color-selector">
+          <clw-list :options="allColor" v-model="addForm.color" class="color-selector">
             <div slot-scope="{ option }" :class="option.color" class="item">
               <Icon type="ios-checkmark" class="color"/>
             </div>
-          </common-list>
+          </clw-list>
         </FormItem>
         <FormItem label="值班人员">
           <Tag v-for="item in addForm.workers" closable :key="item.userId" :name="item.userId" closable @on-close="handleClose">{{ item.userName }}</Tag>
@@ -69,11 +69,9 @@
 </template>
 <script>
 import { dateFtt } from '@/libs/tools'
-import CommonList from '_c/common/common-list'
 // import { saveDutyRoster } from '@/api/duty'
 export default {
   components: {
-    CommonList
   },
   data () {
     return {
