@@ -5,6 +5,7 @@
         <Menu mode="horizontal" theme="dark" active-name="0">
           <div class="layout-logo" @click="goHomePage">
           </div>
+          <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
         </Menu>
       </Header>
       <Content>
@@ -35,7 +36,16 @@
   </div>
 </template>
 <script>
+import Fullscreen from '../components/fullscreen'
 export default {
+  components: {
+    Fullscreen,
+  },
+  data () {
+    return {
+      isFullscreen: false
+    }
+  },
   methods: {
     goHomePage () {
       window.location.href = '//admin.akpay.top'
