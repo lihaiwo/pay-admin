@@ -8,6 +8,9 @@ import config from '@/config'
 import 'ikpay/dist/styles/ikpay.css'
 import './less/index.less'
 import '@/assets/icons/iconfont.css'
+import SvgIcon from 'vue-svg-icon/Icon.vue'
+
+Vue.component('svg-icon', SvgIcon)
 
 Vue.use(ikpay)
 Vue.use(globelComponents)
