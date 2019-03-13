@@ -7,7 +7,6 @@ import globelComponents from '_c/index'
 import config from '@/config'
 import 'ikpay/dist/styles/ikpay.css'
 import './less/index.less'
-import '@/assets/icons/iconfont.css'
 
 Vue.use(ikpay)
 Vue.use(globelComponents)

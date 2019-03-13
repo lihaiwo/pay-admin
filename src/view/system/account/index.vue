@@ -3,7 +3,6 @@
     <template slot="header-btn">
       <Button type="default" @click="create(true)">新增</Button>
       <Button type="default" @click="openPowerTree">设置菜单权限</Button>
-      <Button type="default" @click="openImport">导入</Button>
     </template>
     <div slot="search">
       <Form ref="searchData" :model="searchData" inline>
@@ -25,7 +24,6 @@
     </div>
     <div slot="children">
       <add :status.sync="pageStatus"></add>
-      <import-form :status.sync="pageStatus"  @on-callback="callbackImport"></import-form>
       <power-tree :status.sync="pageStatus" :value="4" @on-callback="callbackTree"></power-tree>
     </div>
   </base-layout>
@@ -33,10 +31,9 @@
 <script>
 import add from './add'
 import PowerTree from './power'
-import importForm from '_c/form/import'
 import main from '_c/mixins/main'
 export default {
-  components: { add, PowerTree, importForm },
+  components: { add, PowerTree },
   mixins: [main],
   data () {
     return {
@@ -54,12 +51,6 @@ export default {
       this.eventHub.$emit('power-tree', {aaa: 11})
     },
     callbackTree (data) {
-    },
-    openImport () {//数据导入
-      this.pageStatus = 3
-    },
-    callbackImport (data) {
-      
     },
     //增删改查  ---start
     callbackCreate () {

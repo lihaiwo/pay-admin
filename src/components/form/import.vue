@@ -35,16 +35,19 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      jsonData: null,
+    };
   },
   methods: {
     handleSubmit() {
       this.closeDiv();
-      this.$emit("on-callback", {});
+      this.$emit("on-callback", this.jsonData);
     },
+    
     handleUpload(file) {
-       importf(file).then( json => {
-        console.log(json)
+      importf(file).then( json => {
+        this.jsonData = json
       })
       return false
     },

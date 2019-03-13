@@ -21,6 +21,7 @@
                     </template>
                     <MenuItem name="system/account">账户管理</MenuItem>
                     <MenuItem name="system/duty">值班表</MenuItem>
+                    <MenuItem name="system/import">国标导入</MenuItem>
                     <MenuItem name="system/svg">svg图标</MenuItem>
                   </Submenu>
                 </Menu>
