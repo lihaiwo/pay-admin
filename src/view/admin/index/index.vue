@@ -23,6 +23,7 @@
                     <MenuItem name="system/duty">值班表</MenuItem>
                     <MenuItem name="system/import">国标导入</MenuItem>
                     <MenuItem name="system/svg">svg图标</MenuItem>
+                    <MenuItem name="system/cropper">图片剪切</MenuItem>
                   </Submenu>
                 </Menu>
               </Sider>

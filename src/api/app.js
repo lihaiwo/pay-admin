@@ -38,3 +38,11 @@ export const apiInit = (table) => {
   }
   return api;
 }
+
+export const uploadImg = formData => {
+  return axios.request({
+    url: '/system/upload',
+    method: 'post',
+    data: formData
+  })
+}

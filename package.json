@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "cropperjs": "^1.2.2",
     "echarts": "^4.0.4",
     "ikpay": "0.1.7",
     "js-cookie": "^2.2.0",

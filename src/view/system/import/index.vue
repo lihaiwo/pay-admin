@@ -34,6 +34,7 @@ import tbox_period_1s from './tbox_period_1s.json'
 import tbox_period_5s from './tbox_period_5s.json'
 import tbox_period_30s from './tbox_period_30s.json'
 import tbox_period_60s from './tbox_period_60s.json'
+import tbox_event_msg from './tbox_event_msg.json'
 import ExportCsv from '@/libs/download';
 import ExportCsvUtils from '@/libs/csv';
 import main from '_c/mixins/main'
@@ -47,8 +48,12 @@ export default {
       data: [],
       tempData: [],
       columns: [
+        // { title: "序号", key: "id" },
+        // { title: "节点", key: "group" },
+        // { title: "信号名", key: "name" },
+        // { title: "topic", key: "topic" },
+
         { title: "序号", key: "id" },
-        { title: "节点", key: "group" },
         { title: "信号名", key: "name" },
         { title: "topic", key: "topic" },
       ],
@@ -60,8 +65,11 @@ export default {
     },
     callbackImport (data) {
       this.data = data.map( item => {
-        var { "序号":id, "信号名": name, "节点": group, topic} = item
-        return { id, name, group, topic }
+      //   var { "序号":id, "信号名": name, "节点": group, topic} = item
+      //   return { id, name, group, topic }
+
+        var { "Signal Name":name } = item
+        return { name, id: ++this.curIndex }
       })
     },
     //增删改查  ---start
@@ -76,19 +84,22 @@ export default {
     },
     //增删改查  ---end
     getResultData () {
-      this.curIndex = this.data.length;
+      this.curIndex = this.data.length + 1;
       this.tempData = [];
 
       this.getResult( tbox_period_1s , this.data );
       this.getResult( tbox_period_5s , this.data );
       this.getResult( tbox_period_30s , this.data );
       this.getResult( tbox_period_60s , this.data );
+      this.getResult( tbox_event_msg , this.data );
+
+      this.data.splice(0,1, this.data[0]) ;
     },
     getResult (sourceData, json) {
       for (let [key, value] of Object.entries(sourceData.dataList)) {
         var temItem = json.find( x => x.name === key);
         if (temItem) {
-          temItem.topic =sourceData.msgType
+          temItem.topic =  temItem.topic? ( temItem.topic + '-' +  sourceData.msgType ): sourceData.msgType
         }else {
           this.tempData.push({
             id: this.curIndex++ , group: '不存在', name: key, topic: sourceData.msgType

@@ -6,6 +6,7 @@ export default [
       {path: 'system/duty',component: () => import('@/view/system/duty/index.vue')},
       {path: 'system/import',component: () => import('@/view/system/import/index.vue')},
       {path: 'system/svg',component: () => import('@/view/system/svg/index.vue')},
+      {path: 'system/cropper',component: () => import('@/view/system/cropper/index.vue')},
     ]
   }
 ]
