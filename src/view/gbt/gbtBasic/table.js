@@ -15,20 +15,21 @@ export const columns = (vm) => [
   { type: 'index', width: 60, align: 'center' },
   { title: "国标类型", key: "topic" },
   { title: "信号类型", render: (h, params) => { 
-    let tmp = vm.GB_SIGNALT_TYPEList.find(x=>x.value === params.row.signalType)
+    let tmp = vm.GB_SIGNALT_TYPEList.find(x=>x.type === params.row.signalType)
     return h("span", tmp && tmp.title )
   } },
   { title: "原始key", key: "originKey" },
   { title: "信号key", key: "signalKey" },
   { title: "信号名称", key: "signalName" },
+  { title: "hbasekey", key: "hbaseKey" },
   { title: "类型", render: (h, params) => {
     return h("span",params.row.type === '0' ? '枚举': '键值')
   } },
-  { title: "更新时间", render: (h, params) => {
-    return h("span",dataFilter(new Date(params.row.updateTime)))
-  } },
+  // { title: "更新时间", render: (h, params) => {
+  //   return h("span",dataFilter(new Date(params.row.updateTime)))
+  // } },
   { title: "操作",
-    width: 250,
+    width: 150,
     align: "center",
     render: (h, params) => {
       return h("div", [

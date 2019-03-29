@@ -6,12 +6,25 @@
     <div slot="search">
       <Form ref="searchData" :model="searchData" inline>
         <FormItem prop="topic">
-          <Select v-model="searchData.topic" placeholder="国标类型">
+          <Select v-model="searchData.topic" clearable placeholder="国标类型">
             <Option value="gb_data">国标数据</Option>
           </Select>
         </FormItem>
-        <FormItem prop="signal">
-          <Input type="text" v-model="searchData.signalKey_like" placeholder="信号key">
+        <FormItem prop="signalType">
+          <Select v-model="searchData.signalType" placeholder="信号类型" clearable>
+            <Option :value="item.type" v-for="item in GB_SIGNALT_TYPEList" :key="item.id">{{item.title}}</Option>
+          </Select>
+        </FormItem>
+        <FormItem prop="originKey">
+          <Input type="text" v-model="searchData.originKey" clearable placeholder="原始key">
+          </Input>
+        </FormItem>
+        <FormItem prop="signalKey">
+          <Input type="text" v-model="searchData.signalKey" clearable placeholder="信号key">
+          </Input>
+        </FormItem>
+        <FormItem prop="signalName">
+          <Input type="text" v-model="searchData.signalName_like" clearable placeholder="信号名称">
           </Input>
         </FormItem>
         <FormItem>
@@ -46,6 +59,7 @@ export default {
       // 表格
       columns: columns(this),
       searchData: {},
+      GB_SIGNALT_TYPEList: [],
     }
   },
   methods: {

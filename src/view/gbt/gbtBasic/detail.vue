@@ -19,7 +19,7 @@ export default {
     }
   },
   mounted () {
-    apiRequest.index({ pageNum: 1, pageSize: 10, signalKey: this.row.signalKey }).then(res => {
+    apiRequest.index({signalKey: this.row.signalKey }).then(res => {
       this.des = res.data.map( x => x.optionName + '-' + x.optionValue);
     })
   }

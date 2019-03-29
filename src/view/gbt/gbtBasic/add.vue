@@ -12,7 +12,7 @@
           </FormItem>
           <FormItem label="信号类型" prop="signalType">
             <Select v-model="addForm.signalType">
-              <Option :value="item.value" v-for="item in GB_SIGNALT_TYPEList" :key="item.id">{{item.title}}</Option>
+              <Option :value="item.type" v-for="item in GB_SIGNALT_TYPEList" :key="item.id">{{item.title}}</Option>
             </Select>
           </FormItem>
           <FormItem label="值类型" prop="type">
