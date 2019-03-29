@@ -23,12 +23,15 @@
       </div>
     </div>
     <div slot="children">
-      <add :status.sync="pageStatus"></add>
+      <add :status.sync="pageStatus" @on-callback="callbackCreate"></add>
       <power-tree :status.sync="pageStatus" :value="4" @on-callback="callbackTree"></power-tree>
     </div>
   </base-layout>
 </template>
 <script>
+import { apiInit } from '@/api/app'
+const apiRequest = apiInit('sys_user_info')
+import { columns } from './table'
 import add from './add'
 import PowerTree from './power'
 import main from '_c/mixins/main'
@@ -38,11 +41,7 @@ export default {
   data () {
     return {
       searchData: {},
-      columns: [
-        { title: "账户", key: "appName" },
-        { title: "用户名称", key: "title" },
-        { title: "角色", key: "weight" },
-      ],
+      columns: columns(this),
     }
   },
   methods: {
@@ -53,17 +52,28 @@ export default {
     callbackTree (data) {
     },
     //增删改查  ---start
-    callbackCreate () {
-
-    },
-    create (isNew) {
-      this.pageStatus = isNew? 1: 2
+    create (isNew,index) {
+      if(isNew) {
+        this.pageStatus = 1
+        this.eventHub.$emit('account-add', {})
+      }else {
+        this.eventHub.$emit('account-add', {...this.data[index]})
+        this.pageStatus = 2
+        // apiRequest.show(1).then(res => {
+        //   console.log(res)
+        // })
+      }
     },
     remove (id) { //删除
     },
     search (flag) {
       if (flag) this.current = 1;
-      this.search();
+      apiRequest.index({
+        pageNum: this.current, pageSize: this.pageSize, ...this.searchData
+      }).then(res => {
+        this.data = res.data
+        this.total = res.total
+      })
     },
     resetSearch () {
     }

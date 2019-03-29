@@ -5,35 +5,37 @@
     <Row :gutter="16">
       <Form ref="addForm" :model="addForm" :rules="ruleValidate" :label-width="120">
         <Col span="12">
-          <FormItem label="App名称" prop="appName">
-            <Select v-model="addForm.appName">
-              <Option value="xianjinsujie">现金速借</Option>
-              <Option value="jingyudai">鲸鱼贷</Option>
-            </Select>
+          <FormItem label="账户" prop="userName">
+            <Input v-model="addForm.userName" placeholder="账户"></Input>
           </FormItem>
-          <FormItem label="App首页广告图" prop="picture">
-            <Input v-model="addForm.picture" placeholder="请输入App首页广告图地址"></Input>
+          <FormItem label="用户密码" prop="pwd">
+            <Input v-model="addForm.pwd" placeholder="用户密码"></Input>
           </FormItem>
         </Col>
         <Col span="12">
-          <FormItem label="跳转URL" prop="url">
-            <Input v-model="addForm.url" placeholder="请输入跳转URL"></Input>
+          <FormItem label="用户姓名" prop="nickName">
+            <Input v-model="addForm.nickName" placeholder="用户姓名"></Input>
           </FormItem>
-          <FormItem label="启用状态" prop="status">
-            <Select v-model="addForm.status">
-              <Option v-for="item in statusList" :value="item.key" :key="item.key">{{ item.value }}</Option>
-            </Select>
+          <FormItem label="电话" prop="phone">
+            <Input v-model="addForm.phone" placeholder="电话"></Input>
           </FormItem>
         </Col>
+        <Col span="24">
+          <FormItem label="备注" prop="des">
+            <Input type="textarea" :rows="3" v-model="addForm.userComment" placeholder="备注"></Input>
+          </FormItem>
+        </col>
       </Form>
     </Row>
     <div class="o-create-btn">
-      <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-      <Button @click="closeDiv">取消</Button>
+      <Button type="primary" @click="handleSubmit('addForm')">提交</Button>
+      <Button @click="closeDiv(),resetFields('addForm')">取消</Button>
     </div>
   </Card>
 </template>
 <script>
+import { apiInit } from '@/api/app'
+const apiRequest = apiInit('sys_user_info')
 import children from '_c/mixins/children'
 export default {
   mixins: [children],
@@ -60,8 +62,6 @@ export default {
   data () {
     return {
       addForm: {},
-      //字典
-      statusList: [],
       ruleValidate: { //表单效验
 
       }
@@ -71,15 +71,33 @@ export default {
     handleSubmit (name) { //新增、保存提交按钮
       this.$refs[name].validate(valid => {
         if (valid) {
-          this.closeDiv()
-          this.$emit("on-callback", {bb:111});
+          if(this.status==1) {
+            apiRequest.create(this.addForm).then( res => {
+              this.closeDiv()
+              this.$emit("on-callback", {});
+              this.resetFields('addForm');
+              this.$Message.success("新增成功");
+            })
+          }else{
+            apiRequest.update(this.addForm).then( res => {
+              this.closeDiv()
+              this.$emit("on-callback", {});
+              this.resetFields('addForm');
+              this.$Message.success("修改成功");
+            })
+          }
         }
       })
     },
+    //清除模态框验证状态
+    resetFields(formRule){
+      this.$refs[formRule].resetFields();
+    },
   },
   mounted () {
-    // this.eventHub.$on(this.event, data =>{
-    // })
+    this.eventHub.$on(this.event, data =>{
+      this.addForm =  data
+    })
   },
 }
 </script>

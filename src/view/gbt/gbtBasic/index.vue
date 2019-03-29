@@ -52,6 +52,7 @@ export default {
     create (isNew,index) {
       if(isNew) {
         this.pageStatus = 1
+        this.eventHub.$emit('gbt-add', {})
       }else {
         this.eventHub.$emit('gbt-add', {...this.data[index]})
         this.pageStatus = 2
