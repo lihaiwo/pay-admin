@@ -19,7 +19,6 @@
                       <Icon type="ios-people" />
                       系统管理
                     </template>
-                    <MenuItem name="system/account">账户管理</MenuItem>
                     <MenuItem name="system/dict">字典</MenuItem>
                     <MenuItem name="system/duty">值班表</MenuItem>
                     <MenuItem name="system/import">国标导入</MenuItem>
