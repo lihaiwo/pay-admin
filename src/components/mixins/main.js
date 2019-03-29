@@ -7,6 +7,7 @@ export default {
       // 分页
       total: 0,
       current: 1,
+      pageSize: this.$config.pageSize,
     }
   },
   methods: {
@@ -14,7 +15,11 @@ export default {
       'initDictByType'
     ]),
     pageChange(index) { //分页时间
-      this.page.pageNum = index;
+      this.current = index;
+      this.search();
+    },
+    pageSizeChange (pageSize) {
+      this.pageSize = pageSize;
       this.search();
     },
     callbackCreate (data) {

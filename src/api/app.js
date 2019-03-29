@@ -23,6 +23,9 @@ export const apiInit = (table) => {
       })
     },
     update (data) {
+      delete data.createTime
+      delete data.updateTime
+      delete data.isDeleted
       return axios.request({
         url: '/app/'+table+'/'+data.id,
         data,
