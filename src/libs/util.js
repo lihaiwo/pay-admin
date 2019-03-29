@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 // cookie保存的天数
 import config from '@/config'
 
-export const TOKEN_KEY = 'pay-admin'
+export const TOKEN_KEY = 'akpay'
 
 export const setToken = (token) => {
   Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})

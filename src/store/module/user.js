@@ -1,5 +1,6 @@
 import { setToken, getToken, getAccessList } from '@/libs/util'
 import { setLocalStore, getLocalStore } from '@/libs/session'
+import { logout } from '@/api/user'
 export default {
 	state: {
     token: getToken(),
@@ -30,6 +31,17 @@ export default {
 
         setLocalStore('account', userName)
         resolve()
+      })
+    },
+    // 退出登录
+    handleLogOut ({ state, commit }) {
+      return new Promise((resolve, reject) => {
+        logout().then(() => {
+          commit('setToken', '')
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
       })
     },
     // 获取用户相关信息

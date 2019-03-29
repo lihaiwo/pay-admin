@@ -5,6 +5,7 @@
         <Menu mode="horizontal" theme="dark" active-name="0">
           <div class="layout-logo" @click="goHomePage">
           </div>
+          <user :user-avatar="userAvatar"/>
           <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
         </Menu>
       </Header>
@@ -48,14 +49,20 @@
 </template>
 <script>
 import Fullscreen from '../components/fullscreen'
+import User from '../components/user'
 export default {
   components: {
-    Fullscreen,
+    Fullscreen,User
   },
   data () {
     return {
       isFullscreen: false
     }
+  },
+  computed: {
+    userAvatar () {
+      return 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png'
+    },
   },
   methods: {
     goHomePage () {
