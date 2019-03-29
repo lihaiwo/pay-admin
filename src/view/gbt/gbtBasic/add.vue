@@ -10,26 +10,28 @@
               <Option value="gb_data">国标数据</Option>
             </Select>
           </FormItem>
-          <FormItem label="原始key" prop="originKey">
-            <Input v-model="addForm.originKey" placeholder="原始key"></Input>
+          <FormItem label="信号类型" prop="signalType">
+            <Select v-model="addForm.signalType">
+              <Option :value="item.value" v-for="item in GB_SIGNALT_TYPEList" :key="item.id">{{item.title}}</Option>
+            </Select>
           </FormItem>
-          <FormItem label="信号key" prop="signalKey">
-            <Input v-model="addForm.signalKey" placeholder="信号key"></Input>
+          <FormItem label="值类型" prop="type">
+            <Select v-model="addForm.type">
+              <Option value="0">枚举</Option>
+              <Option value="1">键值</Option>
+            </Select>
           </FormItem>
+          
         </Col>
         <Col span="12">
           <FormItem label="信号名称" prop="signalName">
             <Input v-model="addForm.signalName" placeholder="信号名称"></Input>
           </FormItem>
-          <FormItem label="分组" prop="group">
-            <Select v-model="addForm.group">
-            </Select>
+          <FormItem label="原始key" prop="originKey">
+            <Input v-model="addForm.originKey" placeholder="原始key"></Input>
           </FormItem>
-          <FormItem label="类型" prop="type">
-            <Select v-model="addForm.type">
-              <Option value="0">枚举</Option>
-              <Option value="1">键值</Option>
-            </Select>
+          <FormItem label="信号key" prop="signalKey">
+            <Input v-model="addForm.signalKey" placeholder="信号key"></Input>
           </FormItem>
         </Col>
         <Col span="24">
@@ -75,6 +77,7 @@ export default {
     return {
       addForm: {},
       //字典
+      GB_SIGNALT_TYPEList: [],
       ruleValidate: { //表单效验
 
       }
@@ -108,6 +111,7 @@ export default {
     },
   },
   mounted () {
+    this.GB_SIGNALT_TYPEList = this.$store.getters.getDictListByType('GB_SIGNALT_TYPE');
     this.eventHub.$on(this.event, data =>{
       this.addForm =  data
     })

@@ -37,6 +37,7 @@ const apiRequest = apiInit('gbt')
 import add from './add'
 import { columns } from './table'
 import main from '_c/mixins/main'
+import store from '@/store'
 export default {
   components: { add },
   mixins: [main],
@@ -77,9 +78,12 @@ export default {
     //增删改查  ---end
   },
   mounted () {
-    // this.initDictByType(['chargingSpeed']).then(()=>{
-    //   this.chargingSpeedList = this.$store.getters.getDictListByType('chargingSpeed');
-    // })
+    this.GB_SIGNALT_TYPEList = this.$store.getters.getDictListByType('GB_SIGNALT_TYPE');
+  },
+  beforeRouteEnter (to, from, next) {
+    store.dispatch('initDictByType', ['GB_SIGNALT_TYPE']).then(()=>{
+      next()
+    })
   }
 }
 </script>

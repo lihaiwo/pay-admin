@@ -80,9 +80,13 @@ export default {
     //增删改查  ---end
   },
   mounted () {
-    // this.initDictByType(['chargingSpeed']).then(()=>{
-    //   this.chargingSpeedList = this.$store.getters.getDictListByType('chargingSpeed');
-    // })
-  }
+    // this.boardList = this.$store.state.app.cacheObj.board
+  },
+  // beforeRouteEnter (to, from, next) {
+  //   apiInit('board').index().then( res =>{
+  //     store.commit('cache_increment', {key: 'board',value: res})
+  //     next()
+  //   })
+  // }
 }
 </script>

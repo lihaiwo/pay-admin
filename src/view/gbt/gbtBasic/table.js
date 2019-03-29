@@ -14,6 +14,10 @@ export const columns = (vm) => [
   },
   { type: 'index', width: 60, align: 'center' },
   { title: "国标类型", key: "topic" },
+  { title: "信号类型", render: (h, params) => { 
+    let tmp = vm.GB_SIGNALT_TYPEList.find(x=>x.value === params.row.signalType)
+    return h("span", tmp && tmp.title )
+  } },
   { title: "原始key", key: "originKey" },
   { title: "信号key", key: "signalKey" },
   { title: "信号名称", key: "signalName" },

@@ -9,7 +9,10 @@
             <Input v-model="addForm.userName" placeholder="账户"></Input>
           </FormItem>
           <FormItem label="用户密码" prop="pwd">
-            <Input v-model="addForm.pwd" placeholder="用户密码"></Input>
+            <Input v-model="addForm.pwd" type="password" placeholder="用户密码"></Input>
+          </FormItem>
+          <FormItem label="角色" prop="userRoleName">
+            <Input v-model="addForm.userRoleName" placeholder="角色"></Input>
           </FormItem>
         </Col>
         <Col span="12">

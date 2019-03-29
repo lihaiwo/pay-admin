@@ -15,6 +15,7 @@ export const columns = (vm) => [
   { type: 'index', width: 60, align: 'center' },
   { title: "账户", key: "userName" },
   { title: "用户姓名", key: "nickName" },
+  { title: "角色", key: "userRoleName" },
   { title: "电话", key: "phone" },
   { title: "邮箱", key: "email" },
   { title: "备注", key: "userComment" },
