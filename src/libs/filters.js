@@ -1,7 +1,7 @@
 import { dateFtt } from './tools'
-export const dataFilter = (value) => {
+export const dataFilter = (value, format) => {
   if (!value) return ''
-  return dateFtt(value)
+  return dateFtt(value, format)
 }
 
 export const percentFilter = (value) => {

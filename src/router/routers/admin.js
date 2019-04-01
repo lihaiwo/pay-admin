@@ -10,6 +10,8 @@ export default [
 
       {path: 'gbt/gbtBasic',component: () => import('@/view/gbt/gbtBasic/index.vue')},
       {path: 'gbt/gbtEnum',component: () => import('@/view/gbt/gbtEnum/index.vue')},
+
+      {path: 'tools/check',component: () => import('@/view/tools/check/index.vue')},
     ]
   }
 ]

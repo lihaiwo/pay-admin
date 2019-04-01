@@ -34,6 +34,13 @@
                     <MenuItem name="gbt/gbtBasic">标准数据</MenuItem>
                     <MenuItem name="gbt/gbtEnum">枚举值管理</MenuItem>
                   </Submenu>
+                  <Submenu name="3">
+                    <template slot="title">
+                      <Icon type="md-bonfire" />
+                      工具
+                    </template>
+                    <MenuItem name="tools/check">考勤表统计</MenuItem>
+                  </Submenu>
                 </Menu>
               </Sider>
               <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
