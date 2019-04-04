@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import baseURL from '_conf/url'
-import { Message } from 'ikpay'
+import { Message,Modal } from 'ikpay'
 import { getToken, remevoToken } from '@/libs/util'
 
 class httpRequest {
@@ -23,8 +23,7 @@ class httpRequest {
     // 添加请求拦截器
     instance.interceptors.request.use(config => {
       // if (config.url.includes('/private')) {
-          config.headers['authorization'] = getToken() || 'test'
-          config.headers['loginAccountId'] = 1
+          config.headers['authorization'] = getToken()
       // }
       // Spin.show()
       // 在发送请求之前做些什么
@@ -54,7 +53,20 @@ class httpRequest {
       }
       return data
     }, (error) => {
-      Message.error('服务内部错误')
+      if (error.response.status === 401) {
+        Modal.confirm({
+          title: '登录已过期',
+          content: '请重新登录',
+          onOk: () => {
+            remevoToken()
+            window.location.href = '//admin.akpay.top'
+          },
+          onCancel: () => {
+          }
+        });
+      }else {
+        Message.error('服务内部错误')
+      }
       // 对响应错误做点什么
       return Promise.reject(error)
     })
