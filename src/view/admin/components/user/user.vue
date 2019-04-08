@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { getToken, remevoToken } from '@/libs/util'
 import './user.less'
 import { mapActions } from 'vuex'
 export default {
@@ -36,6 +37,7 @@ export default {
     ]),
     logout () {
       this.handleLogOut().then(() => {
+        remevoToken()
         window.location.href = '//admin.akpay.top#/login'
       })
     },

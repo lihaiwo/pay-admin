@@ -49,3 +49,11 @@ export const uploadImg = formData => {
     data: formData
   })
 }
+
+export const modifyRedis = ({key, value}) => {
+  return axios.request({
+    url: '/system/modifyRedis',
+    method: 'post',
+    data: {key, value}
+  })
+}

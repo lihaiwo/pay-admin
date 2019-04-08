@@ -41,6 +41,13 @@
                     </template>
                     <MenuItem name="tools/check">考勤表统计</MenuItem>
                   </Submenu>
+                  <Submenu name="4">
+                    <template slot="title">
+                      <Icon type="ios-bowtie" />
+                      模拟器
+                    </template>
+                    <MenuItem name="simulator/gbData">车辆国标数据模拟</MenuItem>
+                  </Submenu>
                 </Menu>
               </Sider>
               <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
