@@ -14,7 +14,7 @@ export const columns = (vm) => [
   },
   { title: "VIN码", key: "vin" ,width: 180},
   { title: "车型", key: "vinType" },
-  { title: "车辆状态", key: "vehicleStatusName" },
+  { title: "任务名称", key: "taskName" ,width: 120},
   { title: "4s店", key: "dealerName" },
   { title: "是否启动", render: (h, params) => {
     return h("span",params.row.startFlag== '1'?'是':'否')

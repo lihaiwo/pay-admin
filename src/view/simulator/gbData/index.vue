@@ -7,7 +7,11 @@
     </template>
     <div slot="search">
       <Form ref="searchData" :model="searchData" inline>
-        <FormItem prop="topic">
+        <FormItem prop="vin">
+          <Input type="text" v-model="searchData.vin" clearable placeholder="vin码">
+          </Input>
+        </FormItem>
+        <FormItem prop="startFlag">
           <Select v-model="searchData.startFlag" clearable placeholder="是否启动">
             <Option :value="1">启动</Option>
             <Option :value="0">暂停</Option>
@@ -33,6 +37,9 @@
     <Form :model="modelForm" :label-width="80">
       <FormItem label="vin码">
         <Input v-model="modelForm.vin" disabled></Input>
+      </FormItem>
+      <FormItem label="任务名称" prop="taskName">
+        <Input v-model="modelForm.taskName" placeholder="任务名称"></Input>
       </FormItem>
       <FormItem label="mock地址" prop="url">
         <Input v-model="modelForm.url" placeholder="mock地址"></Input>
@@ -90,7 +97,7 @@ export default {
     },
     modifyVin (row) {
       apiRequest.update({
-        id: row.id, url: row.url
+        id: row.id, url: row.url, taskName: row.taskName
       }).then(res => {
         this.search()
       })
