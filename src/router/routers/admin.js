@@ -13,8 +13,6 @@ export default [
       {path: 'gbt/gbtEnum',component: () => import('@/view/gbt/gbtEnum/index.vue')},
       // 工具
       {path: 'tools/check',component: () => import('@/view/tools/check/index.vue')},
-      // 模拟器
-      {path: 'simulator/gbData',component: () => import('@/view/simulator/gbData/index.vue')},
     ]
   }
 ]
