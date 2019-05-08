@@ -20,7 +20,6 @@
                       <Icon type="ios-people" />
                       系统管理
                     </template>
-                    <MenuItem name="system/dict">字典</MenuItem>
                     <MenuItem name="system/duty">值班表</MenuItem>
                     <MenuItem name="system/import">国标导入</MenuItem>
                     <MenuItem name="system/svg">svg图标</MenuItem>
