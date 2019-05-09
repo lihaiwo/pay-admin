@@ -1,5 +1,5 @@
 export default [
-  {path: '/admin',component: () => import('@/view/admin/index/index'),
+  {path: '/admin',component: () => import('@/view/layout/index/admin'),
     children: [
       // 基本组件
       {path: '',component: () => import('@/view/admin/home')},
