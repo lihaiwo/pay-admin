@@ -1,8 +1,7 @@
 import Cookies from 'js-cookie'
 // cookie保存的天数
 import config from '@/config'
-
-export const TOKEN_KEY = 'akpay'
+const { title, TOKEN_KEY } = config
 
 export const setToken = (token) => {
   Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})
@@ -44,4 +43,15 @@ export const getAccessList = (menuPower) => {
     access.push('/' + item.url)
   }
   return access
+}
+
+/**
+ * @description 根据当前跳转的路由设置显示在浏览器标签的title
+ * @param {Object} routeItem 路由对象
+ * @param {Object} vm Vue实例
+ */
+export const setTitle = (routeItem, vm) => {
+  const pageTitle = (routeItem.meta && routeItem.meta.title)
+  const resTitle = pageTitle ? `${title} - ${pageTitle}` : title
+  window.document.title = resTitle
 }

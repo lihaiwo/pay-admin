@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import routes from './routers'
 import store from '@/store'
 import { LoadingBar } from 'ikpay'
-import { getToken, canTurnTo } from '@/libs/util'
+import { setTitle, getToken, canTurnTo } from '@/libs/util'
 import config from '@/config'
 
 Vue.use(Router)
@@ -43,6 +43,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
+  setTitle(to, router.app)
   LoadingBar.finish()
   window.scrollTo(0, 0)
 })
