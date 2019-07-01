@@ -71,10 +71,12 @@ export default {
           if (curDate.getFullYear() === fullyear && curDate.getMonth() === months && this.searchData.names === x.Name) {
             var temItem = tmpData[curDate.getDate()-1]
             if (temItem.Name) {
-              temItem.curDate2 = x.DateTime.substr(11)
+              // temItem.curDate2 = x.DateTime.substr(11)
+              temItem.curDate2 = dataFilter(curDate,'hh:mm:ss')
             }else {
               Object.assign(temItem,x)
-              temItem.curDate1 = x.DateTime.substr(11)
+              // temItem.curDate1 = x.DateTime.substr(11)
+              temItem.curDate1 = dataFilter(curDate,'hh:mm:ss')
               temItem.curDate = dataFilter(curDate,'yyyy-MM-dd')
             }
           }

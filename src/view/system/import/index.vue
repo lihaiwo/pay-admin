@@ -30,6 +30,7 @@
 </template>
 <script>
 import importForm from '_c/form/import'
+import testJson from './test.json'
 import tbox_period_1s from './tbox_period_1s.json'
 import tbox_period_5s from './tbox_period_5s.json'
 import tbox_period_30s from './tbox_period_30s.json'
@@ -56,6 +57,8 @@ export default {
         { title: "序号", key: "id" },
         { title: "信号名", key: "name" },
         { title: "topic", key: "topic" },
+        { title: "event", key: "event" },
+        { title: "time", key: "time" },
       ],
     }
   },
@@ -67,9 +70,9 @@ export default {
       this.data = data.map( item => {
       //   var { "序号":id, "信号名": name, "节点": group, topic} = item
       //   return { id, name, group, topic }
-
-        var { "Signal Name":name } = item
-        return { name, id: ++this.curIndex }
+               
+        var { 'Signal Name':name, 'MsgCycleTime':time, 'Msg Send Type':event } = item
+        return { name,time,event, id: ++this.curIndex }
       })
     },
     //增删改查  ---start
@@ -87,36 +90,38 @@ export default {
       this.curIndex = this.data.length + 1;
       this.tempData = [];
 
-      this.getResult( tbox_period_1s , this.data );
-      this.getResult( tbox_period_5s , this.data );
-      this.getResult( tbox_period_30s , this.data );
-      this.getResult( tbox_period_60s , this.data );
-      this.getResult( tbox_event_msg , this.data );
+      this.getResult( testJson , this.data );
+      // this.getResult( tbox_period_5s , this.data );
+      // this.getResult( tbox_period_30s , this.data );
+      // this.getResult( tbox_period_60s , this.data );
+      // this.getResult( tbox_event_msg , this.data );
 
-      this.data.splice(0,1, this.data[0]) ;
+      this.data =  this.tempData;
     },
     getResult (sourceData, json) {
-      for (let [key, value] of Object.entries(sourceData.dataList)) {
-        var temItem = json.find( x => x.name === key);
+
+      for(let [index,item] of sourceData.entries()) {
+        var temItem = json.find( x => x.name == item.name);
         if (temItem) {
-          temItem.topic =  temItem.topic? ( temItem.topic + '-' +  sourceData.msgType ): sourceData.msgType
+          item.event = temItem.event;
+          item.time = temItem.time;
         }else {
-          this.tempData.push({
-            id: this.curIndex++ , group: '不存在', name: key, topic: sourceData.msgType
-          })
+          item.event = '不存在';
+          item.time = '';
         }
+        this.tempData.push(item);
       }
     },
     exportDownload () {
       let columns = [];
       let datas = [];
       if (this.data) {
-        datas = [...this.data, ...this.tempData];
+        datas = [...this.tempData];
         columns = [
-          {title: '序号', key: 'id'},
-          {title: '节点', key: 'group'},
           {title: '信号名', key: 'name'},
           {title: 'topic', key: 'topic'},
+          {title: 'event', key: 'event'},
+          {title: 'time', key: 'time'},
         ]
       }
       let noHeader = false;

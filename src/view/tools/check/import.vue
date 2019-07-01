@@ -21,7 +21,6 @@
 </template>
 <script>
 import children from '_c/mixins/children'
-import { importf } from '@/libs/excel';
 export default {
   mixins: [ children ],
   props: {
