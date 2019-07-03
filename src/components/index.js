@@ -1,5 +1,5 @@
 import BaseLayout from './layout/base-layout.vue';
-import SvgIcon from 'vue-svg-icon/Icon.vue'
+import SvgIcon from './svg/Icon.vue'
 import { getAllIcons } from '@/libs/require.context'
 
 const components = {
