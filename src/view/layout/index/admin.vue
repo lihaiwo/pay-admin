@@ -25,14 +25,6 @@
                     <MenuItem name="system/svg">svg图标</MenuItem>
                     <MenuItem name="system/cropper">图片剪切</MenuItem>
                   </Submenu>
-                  <Submenu name="2">
-                    <template slot="title">
-                      <Icon type="ios-analytics" />
-                      国标数据管理
-                    </template>
-                    <MenuItem name="gbt/gbtBasic">标准数据</MenuItem>
-                    <MenuItem name="gbt/gbtEnum">枚举值管理</MenuItem>
-                  </Submenu>
                   <Submenu name="3">
                     <template slot="title">
                       <Icon type="md-bonfire" />
